@@ -5,6 +5,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 export const materialImports = [
     MatTableModule,
@@ -14,4 +16,6 @@ export const materialImports = [
     MatFormFieldModule,
     MatPaginatorModule,
     MatSortModule,
+    MatIconModule,
+    MatMenuModule,
 ];

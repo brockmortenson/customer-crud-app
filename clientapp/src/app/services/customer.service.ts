@@ -7,9 +7,9 @@ import { ICustomer } from '../shared/interfaces/interfaces';
   providedIn: 'root'
 })
 export class CustomerService {
-  private apiUrl = 'http://localhost:5016/api/customers';
+  private apiUrl = 'http://localhost:5016/api/Customers';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getCustomers(): Observable<Array<ICustomer>> {
     return this.http.get<Array<ICustomer>>(this.apiUrl);
