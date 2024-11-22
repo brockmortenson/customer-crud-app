@@ -18,4 +18,5 @@ export const materialImports = [
     MatSortModule,
     MatIconModule,
     MatMenuModule,
+    MatDialogModule,
 ];

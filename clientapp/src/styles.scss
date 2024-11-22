@@ -18,3 +18,9 @@ body {
         background-color: theme('colors.dark-primary');
       }
 }
+
+.delete-customer-dialog {
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: theme('colors.warning');
+  }
+}

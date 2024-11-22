@@ -460,19 +460,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Brock Mortenson\\.nuget\\packages\\": {}
+    "C:\\Users\\brock\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Brock Mortenson\\coding-projects-laptop\\CustomerCrudApp.Web\\server\\server.csproj",
+      "projectUniqueName": "C:\\Users\\brock\\coding-projects\\customer-crud-app\\server\\server.csproj",
       "projectName": "server",
-      "projectPath": "C:\\Users\\Brock Mortenson\\coding-projects-laptop\\CustomerCrudApp.Web\\server\\server.csproj",
-      "packagesPath": "C:\\Users\\Brock Mortenson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Brock Mortenson\\coding-projects-laptop\\CustomerCrudApp.Web\\server\\obj\\",
+      "projectPath": "C:\\Users\\brock\\coding-projects\\customer-crud-app\\server\\server.csproj",
+      "packagesPath": "C:\\Users\\brock\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\brock\\coding-projects\\customer-crud-app\\server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Brock Mortenson\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\brock\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

@@ -1,0 +1,19 @@
+<form [formGroup]="customerForm">
+  <mat-form-field appearance="outline">
+    <label>First name</label>
+    <input matInput formControlName="firstName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <label>Last name</label>
+    <input matInput formControlName="lastName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <label>Email</label>
+    <input matInput formControlName="email">
+    @if (email.hasError('email')) {
+      <mat-error>Invalid email</mat-error>
+    }
+  </mat-form-field>
+</form>

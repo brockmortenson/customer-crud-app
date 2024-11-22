@@ -67,9 +67,6 @@ public class CustomersController : ControllerBase
     [HttpPost]
     public ActionResult<Customer> CreateCustomer(Customer customer)
     {
-        customer.Id = Guid.NewGuid().ToString();
-        customer.CreatedAt = DateTime.Now;
-        customer.UpdatedAt = DateTime.Now;
         _customers.Add(customer);
         return CreatedAtAction(nameof(GetCustomer), new { id = customer.Id }, customer);
     }
