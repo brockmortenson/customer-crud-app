@@ -7,12 +7,13 @@ import { DateTime } from 'luxon';
 })
 export class ShortDatePipe implements PipeTransform {
 
-  transform(value: string): string {
+  transform(value: string | DateTime): string {
     if (!value) {
       return '';
     }
 
-    const formattedValue = DateTime.fromISO(value).toLocal().toFormat('M/d/yyyy HH:mm a');
+    const format = 'M/d/yyyy h:mm a';
+    const formattedValue = typeof value === 'string' ? DateTime.fromISO(value).toLocal().toFormat(format) : value.toFormat(format);
     return formattedValue;
   }
 

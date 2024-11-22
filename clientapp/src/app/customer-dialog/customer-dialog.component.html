@@ -1,1 +1,33 @@
-<p>customer-dialog works!</p>
+<div>
+    <h3 mat-dialog-title>{{ data.action }} customer</h3>
+
+    <mat-dialog-content>
+        @switch (data.action) {
+            @case (CustomerAction.View) {
+                <div class="[&>p]:font-medium">
+                    <p>First name: {{ data.customer?.firstName }}</p>
+                    <p>Last name: {{ data.customer?.lastName }}</p>
+                    <p>Email: {{ data.customer?.email }}</p>
+                    <p>Date created: {{ data.customer?.createdAt | shortDate }}</p>
+                    <p>Date created: {{ data.customer?.updatedAt | shortDate }}</p>
+                </div>
+            }
+            @case (CustomerAction.Create) {
+                <app-customer-form [customerForm]="customerForm"></app-customer-form>
+            }
+            @case (CustomerAction.Edit) {
+                <app-customer-form [customerForm]="customerForm"></app-customer-form>
+            }
+            @case (CustomerAction.Delete) {
+                <p>Are you sure you want to delete this customer?</p>
+            }
+        }
+    </mat-dialog-content>
+
+    @if (data.action !== CustomerAction.View) {
+        <mat-dialog-actions class="!justify-end">
+            <button mat-button (click)="close()">Cancel</button>
+            <button mat-button [disabled]="customerForm.invalid" (click)="close(data.customer)">Confirm</button>
+        </mat-dialog-actions>
+    }
+</div>

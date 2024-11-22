@@ -22,25 +22,33 @@
 
         <ng-container matColumnDef="updatedAt">
             <th mat-header-cell *matHeaderCellDef>Date last updated</th>
-            <td mat-cell *matCellDef="let element">{{ element.updatedAt }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.updatedAt | shortDate }}</td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef></th>
+            <th class="fab" mat-header-cell *matHeaderCellDef>
+                <button mat-icon-button (click)="openDialog(CustomerAction.Create)">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </th>
             <td mat-cell *matCellDef="let element">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
+                <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation();">
                     <mat-icon>more_vert</mat-icon>
                 </button>
+
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openDialog(CustomerAction.View, element)">View</button>
+                    <button mat-menu-item (click)="openDialog(CustomerAction.Edit, element)">Edit</button>
+                    <button mat-menu-item (click)="openDialog(CustomerAction.Delete, element)">Delete</button>
+                </mat-menu>
             </td>
         </ng-container>
 
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>Edit</button>
-            <button mat-menu-item>Delete</button>
-        </mat-menu>
-
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+        <tr class="hover:bg-light-primary cursor-pointer"
+        [class]="element.isLastSelected ? '!bg-light-primary' : null"
+        mat-row *matRowDef="let element; columns: displayedColumns;"
+        (click)="openDialog(CustomerAction.View, element);"></tr>
     </table>
 
     <mat-paginator pageSize="20" [pageSizeOptions]="[20, 35, 50]"></mat-paginator>
