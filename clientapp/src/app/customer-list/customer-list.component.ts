@@ -39,7 +39,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
 
   public openDialog(action: CustomerAction, customer?: ICustomer): void {
     const data: ICustomerDialogData = { action, customer };
-    if (action !== CustomerAction.Create) {
+    if (customer) {
       this.setLastSelected(customer);
     }
 
@@ -53,6 +53,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
       if (customer) {
         switch (action) {
           case CustomerAction.Create:
+            this.setLastSelected(customer)
             this.customerService.createCustomer(customer).pipe(take(1)).subscribe(() => this.loadCustomers());
             break;
           case CustomerAction.Delete:
@@ -73,6 +74,7 @@ export class CustomerListComponent implements OnInit, OnDestroy {
   private loadCustomers() {
     this.subscription.add(this.customerService.getCustomers().subscribe(customers => {
       this.dataSource.data = customers;
+      this.selectLatest();
       this.refreshPaginator();
     }));
   }
@@ -87,6 +89,15 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     sessionStorage.clear();
     sessionStorage.setItem('LAST_SELECTED', customer.id);
     customer.isLastSelected = true;
+  }
+
+  private selectLatest(): void {
+    const selectedId = sessionStorage.getItem('LAST_SELECTED');
+    const selectedCustomer = this.dataSource.data.find((customer) => customer.id === selectedId);
+
+    if (selectedCustomer) {
+      selectedCustomer.isLastSelected = true;
+    }
   }
 
   private refreshPaginator(): void {
